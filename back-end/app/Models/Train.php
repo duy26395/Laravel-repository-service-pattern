@@ -19,6 +19,8 @@ class Train extends Model
         'deleted_at',
     ];
 
+    public const PER_PAGE = 10;
+
     public function prices()
     {
         return $this->hasMany(Price::class);
