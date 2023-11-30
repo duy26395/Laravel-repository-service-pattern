@@ -21,4 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::controller('App\Http\Controllers\TrainsController')->prefix('/trains')->group(function () {
     Route::get('/', 'index');
+    Route::post('/', 'create');
+    Route::get('/{id}', 'show')->whereNumber('id');
+    Route::put('/{id}', 'update')->whereNumber('id');
+    Route::delete('/{id}', 'destroy')->whereNumber('id');
+    
 });
