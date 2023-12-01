@@ -8,6 +8,7 @@ use App\Services\TrainsService;
 use App\http\Requests\TrainsCreateRequest;
 use App\http\Requests\TrainsUpdateRequest;
 use App\Http\Resources\DataResource;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -24,9 +25,9 @@ class TrainsController extends Controller
         $this->trainsService = new TrainsService($trainRepository);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $res = $this->trainsService->getAllData();
+        $res = $this->trainsService->getAllData($request->current_page);
 
         return new PerPageResource($res);
     }
@@ -51,7 +52,7 @@ class TrainsController extends Controller
 
     public function destroy($id)
     {
-        $this->trainsService->DeleteById($id);
+        $this->trainsService->deleteById($id);
         return response()->json([], Response::HTTP_NO_CONTENT);
     }
 }

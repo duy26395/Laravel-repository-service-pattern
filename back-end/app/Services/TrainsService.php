@@ -13,9 +13,9 @@ class TrainsService
         $this->trainRepository = $trainRepository;
     }
 
-    public function getAllData()
+    public function getAllData($current_page)
     {
-        return $this->trainRepository->get_all();
+        return $this->trainRepository->get_all($current_page);
     }
 
     public function insertData($request)
@@ -30,11 +30,10 @@ class TrainsService
 
     public function updateById($id, $request)
     {
-        
         return $this->trainRepository->update_by_id($id, $request->name, $request->time_start);
     }
 
-    public function DeleteById($id)
+    public function deleteById($id)
     {
         return $this->trainRepository->delete_by_id($id);
     }
