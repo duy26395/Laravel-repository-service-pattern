@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\PerPageResource;
 use App\Repository\TrainsRepository;
 use App\Services\TrainsService;
 use App\http\Requests\TrainsCreateRequest;
 use App\http\Requests\TrainsUpdateRequest;
 use App\Http\Resources\DataResource;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -25,11 +23,11 @@ class TrainsController extends Controller
         $this->trainsService = new TrainsService($trainRepository);
     }
 
-    public function index(Request $request)
+    public function index()
     {
-        $res = $this->trainsService->getAllData($request->current_page);
+        $res = $this->trainsService->getAllData();
 
-        return new PerPageResource($res);
+        return new DataResource($res);
     }
 
     public function create(TrainsCreateRequest $request)

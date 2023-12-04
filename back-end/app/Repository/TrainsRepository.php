@@ -24,12 +24,9 @@ class TrainsRepository extends BaseRepository implements TrainsInterface
     /**
      * @return Collection
      */
-    public function get_all($current_page): LengthAwarePaginator
+    public function get_all(): LengthAwarePaginator
     {
-        $offset = ($current_page - 1) * $this->model::PER_PAGE;
-        return $this->model->paginate($current_page);
-        // dd($this->model->paginate($this->model::PER_PAGE), $this->model->skip($offset)->take($this->model::PER_PAGE)->get());
-        // return $this->model->skip($offset)->take($this->model::PER_PAGE)->get();
+        return $this->model->paginate($this->model::PER_PAGE);
     }
 
     public function insert_data($name, $time_start)

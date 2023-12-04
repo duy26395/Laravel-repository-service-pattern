@@ -13,9 +13,9 @@ class TrainsService
         $this->trainRepository = $trainRepository;
     }
 
-    public function getAllData($current_page)
+    public function getAllData()
     {
-        return $this->trainRepository->get_all($current_page);
+        return $this->trainRepository->get_all();
     }
 
     public function insertData($request)
